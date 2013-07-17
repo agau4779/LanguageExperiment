@@ -4,5 +4,5 @@ class Pair < ActiveRecord::Base
 
   attr_accessible :image, :sound
 
-  validates_presence_of :image, :sound
+  #validates_presence_of :image, :sound
 end
