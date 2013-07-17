@@ -11,44 +11,46 @@ UserEntry.destroy_all
 IterativeChain.destroy_all
 
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/key.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/fej.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/key.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/fej.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/truck.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/feej.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/truck.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/feej.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/feather.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/jef.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/feather.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/jef.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/lamp.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/jeej.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/lamp.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/jeej.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/window.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/fef.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/window.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/fef.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/rock climbing.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/gaab.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/rock climbing.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/gaab.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/swimming.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/goob.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/swimming.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/goob.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/running.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/boog.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/running.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/boog.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/jumping on trampoline.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/baab.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/jumping on trampoline.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/baab.wav')))
 p.save!
 p = Pair.create
-p.image.store!(File.open(File.join(Rails.root, 'public/uploads/images/mopping.jpg')))
-p.sound.store!(File.open(File.join(Rails.root, 'public/uploads/audio/goog.wav')))
+p.image.store!(File.open(File.join(Rails.root, 'app/assets/images/mopping.jpg')))
+p.sound.store!(File.open(File.join(Rails.root, 'app/assets/audio/goog.wav')))
 p.save!
 
 iterative_chain = IterativeChain.create(locked: false)
+user_entry = iterative_chain.user_entries.create
+user_entry.pairs << p

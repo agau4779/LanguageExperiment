@@ -4,12 +4,6 @@
   <% @iterative_chains.each_with_index do |iterative_chain, index|%>
     <li>
       <div>Iterative Chain # <%= index %></div>
-      <% iterative_chain.user_entries.each_with_index do |user_entry, index| %>
-        <div>
-          <div><%= user_entry.pairs %></div>
-          <div><%= user_entry.iterative_chain_id %></div>
-        </div>
-      <% end%>
     </li>
   <% end%>
 </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717181220) do
+ActiveRecord::Schema.define(:version => 20130717194648) do
 
   create_table "iterative_chains", :force => true do |t|
     t.boolean  "locked"
@@ -26,9 +26,15 @@ ActiveRecord::Schema.define(:version => 20130717181220) do
     t.string   "sound"
   end
 
+  create_table "pairs_user_entries", :force => true do |t|
+    t.integer "user_entry_id"
+    t.integer "pair_id"
+  end
+
   create_table "user_entries", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "iterative_chain_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end
