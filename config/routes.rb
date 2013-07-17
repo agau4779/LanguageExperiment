@@ -1,3 +1,5 @@
 LanguageExperiment::Application.routes.draw do
-  resources :iterative_chains
+  resources :iterative_chains do
+    resources :user_entries, only: [:index, :show]
+  end
 end
