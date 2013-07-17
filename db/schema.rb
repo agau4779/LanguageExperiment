@@ -11,10 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717175126) do
+ActiveRecord::Schema.define(:version => 20130717181220) do
 
   create_table "iterative_chains", :force => true do |t|
     t.boolean  "locked"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "pairs", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "image"
+    t.string   "sound"
+  end
+
+  create_table "user_entries", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
