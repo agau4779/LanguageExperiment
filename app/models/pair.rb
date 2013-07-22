@@ -1,5 +1,7 @@
 class Pair < ActiveRecord::Base
   attr_accessible :image_id, :sound_id
+  validates_presence_of :image_id, :sound_id
+
   def image
     Image.find_by_id(image_id).image.url
   end
