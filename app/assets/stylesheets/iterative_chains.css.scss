@@ -12,6 +12,36 @@
       display: none;
     }
   }
+  
+  //  Styling for Testing
+  .testing {
+    text-align: center;
+    .main-stimuli {
+      .img-wrapper, .audio-wrapper {
+        display: none;
+      }
+    }
+    .next {
+      display: none;
+    }
+    
+    .choices-wrapper {
+      text-align: left;
+      .choice {
+        display: inline-block;
+        width: 20%;
+        margin: 10px;
+        text-align: center;
+      }
+    }
+    
+    &.phone-to-sem {
+      
+    }
+    
+    &.sem-to-phone {
+    }
+  }
 }
 
 img {
