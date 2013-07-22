@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130722172611) do
 
   create_table "user_entries", :force => true do |t|
     t.integer  "iterative_chain_id"
+    t.text     "pairs"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

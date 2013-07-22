@@ -8,6 +8,7 @@
 
 Sound.destroy_all
 Image.destroy_all
+Pair.destroy_all
 UserEntry.destroy_all
 IterativeChain.destroy_all
 
@@ -23,5 +24,15 @@ Dir.glob(File.join(Rails.root,'/app/assets/audio/*.wav')) do |s|
   sound.save!
 end
 
+(1..10).each do |n|
+  p = Pair.new
+  p.image_id = n
+  p.sound_id = n
+  p.save!
+end
+
 iterative_chain = IterativeChain.create(locked: false)
 user_entry = iterative_chain.user_entries.create
+user_entry.pairs = Array(1..10)
+user_entry.save!
+iterative_chain.save!
