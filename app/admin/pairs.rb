@@ -1,6 +1,13 @@
 ActiveAdmin.register Pair do
   menu priority: 8
 
+  index do |f|
+    column :id
+    column "Image", :image_filename
+    column "Sound", :sound_filename
+    default_actions
+  end
+
   show do |f|
     attributes_table do
       row :image do
