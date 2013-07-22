@@ -1,5 +1,6 @@
 ActiveAdmin.register Sound do
-  menu priority: 10
+  menu priority: 9
+  
   show do |f|
     attributes_table do
       row :sound do
