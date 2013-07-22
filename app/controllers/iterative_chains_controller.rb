@@ -15,4 +15,12 @@ class IterativeChainsController < ApplicationController
       format.json { render json: @iterative_chain }
     end
   end
+  
+  # GET Training /iterative_chains/:iterative_chain_id/training
+  def training
+    @iterative_chain = IterativeChain.find(params[:id])
+    @user_entry = @iterative_chain.user_entries.last
+    @stimuli = @user_entry.pairs
+  end
+  
 end
