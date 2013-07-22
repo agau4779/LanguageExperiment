@@ -1,0 +1,16 @@
+<div class='training'>
+	<h1>Training</h1>
+	<p>Please listen to the sound displayed with the image</p>
+	<% @stimuli.each_with_index do |pair_index, index| %>
+		<div class="training-stimulus" id='<%= "stimuli_" + index.to_s %>'>
+			<div class='img-wrapper'>
+				<%= image_tag(Pair.find(pair_index).image) %>
+			</div>
+			<div class='audio-wrapper'>
+				<%= content_tag(:audio, :controls => "controls") do %>
+					<%= content_tag(:source, "", :src => Pair.find(pair_index).sound) %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
