@@ -9,10 +9,10 @@ class Sound < ActiveRecord::Base
   end
 
   def self.find(f)
-    if !!(f =~ /^[-+]?[0-9]+$/)
+    if (f =~ /^[-+]?[0-9]+$/) || (f.is_a? Integer)
       super(f)
     else
-      Sound.where(filename: f).first
+      Sound.where(filename: f.tr(' ', '_')).first
     end
   end
 end
