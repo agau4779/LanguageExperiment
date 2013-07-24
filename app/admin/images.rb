@@ -3,14 +3,17 @@ ActiveAdmin.register Image do
 
   index do
     column :id
-    column "Image", :image_filename
+    column "Image", :filename
     default_actions
   end
-  
+
   show do |f|
     attributes_table do
+      row :filename do
+        f.filename
+      end
       row :image do
-        image_tag(f.image.url)
+        image_tag(f.path)
       end
     end
     active_admin_comments
