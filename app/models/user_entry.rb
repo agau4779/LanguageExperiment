@@ -10,7 +10,10 @@ class UserEntry < ActiveRecord::Base
 
   def all_files_exist
     begin
-      arr = eval(self.pairs)
+      arr = self.pairs
+      if self.pairs.is_a? String
+        arr = eval(self.pairs)
+      end
       arr.each do |p|
         if Image.find(p[:image]).nil?
           errors.add :base, "Image file #{p[:image]} doesn't exist"
