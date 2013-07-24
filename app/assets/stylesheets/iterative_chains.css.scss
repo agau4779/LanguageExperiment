@@ -2,11 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.iterative_chains {  
+.iterative-chains {  
   background: lightgray;
   
   //  Styling for Training
-  .training {
+  .iterative-chains-training {
     text-align: center;
     .training-stimulus {
       display: none;
@@ -14,7 +14,7 @@
   }
   
   //  Styling for Testing
-  .testing {
+  .iterative-chains-testing {
     text-align: center;
     .main-stimuli {
       .img-wrapper, .audio-wrapper {
@@ -32,6 +32,17 @@
         width: 20%;
         margin: 10px;
         text-align: center;
+        .already-selected-text {
+          display: none;
+        }
+        &.already-selected {
+          * {
+            display: none;
+          }
+          .already-selected-text {
+            display: block;
+          }
+        }
       }
     }
     

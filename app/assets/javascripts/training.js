@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Training
-  $('.training').each(function() {
+  $('.iterative-chains-training').each(function() {
     console.log("User Entry Training")
     var count = 0;
     var stimuli = $(".training-stimulus");
