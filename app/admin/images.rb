@@ -1,5 +1,11 @@
 ActiveAdmin.register Image do
   menu priority: 9
+
+  index do
+    column :id
+    column "Image", :image_filename
+    default_actions
+  end
   
   show do |f|
     attributes_table do
