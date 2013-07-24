@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130722171001) do
     t.datetime "updated_at", :null => false
     t.string   "image"
     t.string   "filename"
+    t.string   "path"
   end
 
   create_table "iterative_chains", :force => true do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130722171001) do
     t.datetime "updated_at", :null => false
     t.string   "sound"
     t.string   "filename"
+    t.string   "path"
   end
 
   create_table "user_entries", :force => true do |t|
