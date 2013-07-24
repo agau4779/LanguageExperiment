@@ -13,7 +13,7 @@ ActiveAdmin.register Image do
         f.filename
       end
       row :image do
-        image_tag(f.path)
+        image_tag(f.image.url)
       end
     end
     active_admin_comments
