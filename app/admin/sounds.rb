@@ -3,12 +3,15 @@ ActiveAdmin.register Sound do
 
   index do
     column :id
-    column "Sound", :sound_filename
+    column "Sound", :filename
     default_actions
   end
 
   show do |f|
     attributes_table do
+      row :filename do
+        f.filename
+      end
       row :sound do
         audio_tag f.sound.url, controls: true
       end

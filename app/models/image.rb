@@ -9,10 +9,10 @@ class Image < ActiveRecord::Base
   end
 
   def self.find(f)
-    if f.is_a? String
-      Image.where(filename: f.tr(" ", "_")).first
-    else
+    if !!(f =~ /^[-+]?[0-9]+$/)
       super(f)
+    else
+      Image.where(filename: f).first
     end
   end
 end
