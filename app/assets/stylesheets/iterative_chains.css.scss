@@ -1,3 +1,30 @@
 // Place all the styles related to the IterativeChain controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.iterative_chains {  
+  background: lightgray;
+  
+  //  Styling for Training
+  .training {
+    text-align: center;
+    .training-stimulus {
+      display: none;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+audio {
+  display: none;
+}
+
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
