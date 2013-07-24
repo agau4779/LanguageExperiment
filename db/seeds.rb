@@ -39,3 +39,36 @@ user_entry.pairs = [
     ]
 user_entry.save!
 iterative_chain.save!
+
+user_entry = iterative_chain.user_entries.create
+user_entry.pairs = [
+      { sound: "fej", image: "key" },
+      { sound: "feej", image: "truck" },
+      { sound: "jef", image: "feather" },
+      { sound: "jeej", image: "lamp" },
+      { sound: "fef", image: "window" },
+      { sound: "gaab", image: "rock climbing" },
+      { sound: "goob", image: "swimming" },
+      { sound: "boog", image: "running" },
+      { sound: "baab", image: "jumping on trampoline" },
+      { sound: "goog", image: "mopping" }
+    ]
+user_entry.save!
+iterative_chain.save!
+
+iterative_chain = IterativeChain.create(locked: false)
+user_entry = iterative_chain.user_entries.create
+user_entry.pairs = [
+      { sound: "fej", image: "key" },
+      { sound: "feej", image: "truck" },
+      { sound: "jef", image: "feather" },
+      { sound: "jeej", image: "lamp" },
+      { sound: "fef", image: "window" },
+      { sound: "gaab", image: "rock climbing" },
+      { sound: "goob", image: "swimming" },
+      { sound: "boog", image: "running" },
+      { sound: "baab", image: "jumping on trampoline" },
+      { sound: "goog", image: "mopping" }
+    ]
+user_entry.save!
+iterative_chain.save!
