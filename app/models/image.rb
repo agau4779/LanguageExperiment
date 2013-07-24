@@ -1,9 +1,17 @@
 class Image < ActiveRecord::Base
+  attr_accessible :image, :filename
   mount_uploader :image, ImageUploader
-  attr_accessible :image
   validates_presence_of :image
 
-  def image_filename
-    File.basename(image.url, File.extname(image.url))
+  before_save do
+    self.filename = File.basename(self.image.url, File.extname(self.image.url))
+  end
+
+  def self.find(f)
+    if f.is_a? String
+      Image.where(filename: f).first
+    else
+      super(f)
+    end
   end
 end

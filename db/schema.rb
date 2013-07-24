@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722172611) do
+ActiveRecord::Schema.define(:version => 20130722171001) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130722172611) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "image"
+    t.string   "filename"
   end
 
   create_table "iterative_chains", :force => true do |t|
@@ -58,17 +59,11 @@ ActiveRecord::Schema.define(:version => 20130722172611) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "pairs", :force => true do |t|
-    t.integer  "image_id"
-    t.integer  "sound_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "sounds", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "sound"
+    t.string   "filename"
   end
 
   create_table "user_entries", :force => true do |t|
