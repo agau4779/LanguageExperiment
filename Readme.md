@@ -10,3 +10,10 @@ Setup
 
 To push to Heroku, add the remote:
 - git remote add heroku git@heroku.com:languagelearningexperiment.git
+
+To reset database on Heroku, use the following commands:
+- heroku pg:reset DATABASE
+	- type in name of app to confirm
+- heroku run rake db:create
+- heroku run rake db:migrate
+- heroku run rake db:seed
