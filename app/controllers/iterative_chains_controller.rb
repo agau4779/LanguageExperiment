@@ -32,9 +32,9 @@ class IterativeChainsController < ApplicationController
     @phones = []
     
     # Construct array of sounds and array of images
-    @last_user_entry.pairs.each do |pair_index|
-      @sems = @sems.push(Pair.find(pair_index).image)
-      @phones = @phones.push(Pair.find(pair_index).sound)
+    @last_user_entry.pairs.each do |pair|
+      @sems = @sems.push(pair[:image])
+      @phones = @phones.push(pair[:sound])
     end
     
     # Randomly sort the stimuli
