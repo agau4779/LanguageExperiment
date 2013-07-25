@@ -7,3 +7,6 @@ Setup
 - `bundle install`
 - `bundle exec rake db:drop db:create db:migrate`
 - `bundle exec rake db:seed`
+
+To push to Heroku, add the remote:
+- git remote add heroku git@heroku.com:languagelearningexperiment.git
