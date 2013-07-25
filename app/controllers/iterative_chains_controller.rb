@@ -47,22 +47,28 @@ class IterativeChainsController < ApplicationController
     end
   end
   
+  # POST Create new user entry /iterative_chains/:iterative_chain_id/finish
   # Update chain by adding new user entry
   def finish
     @iterative_chain = IterativeChain.find(params[:id])
     @user_entry = @iterative_chain.user_entries.create
-    @user_entry.pairs = [
-          { sound: "fej", image: "key" },
-          { sound: "feej", image: "truck" },
-          { sound: "jef", image: "feather" },
-          { sound: "jeej", image: "lamp" },
-          { sound: "fef", image: "window" },
-          { sound: "gaab", image: "rock climbing" },
-          { sound: "goob", image: "swimming" },
-          { sound: "boog", image: "running" },
-          { sound: "baab", image: "jumping on trampoline" },
-          { sound: "goog", image: "mopping" }
-        ]
+    
+    # print params[:testing_pairs]
+    @param_pairs = params[:testing_pairs]
+    @pairs_to_save = []
+    
+    # print "TESTING ---------------------------"
+    @param_pairs.each do |pair|
+      # print pair["sound"]
+      # print "\n"
+      # print pair["image"]
+      @pairs_to_save.push(Hash[:sound => pair["sound"], :image => pair["image"]])
+      # print "CYCLE LOOP ---------------------------"
+    end
+    
+    # print @pairs_to_save
+    @user_entry.pairs = @pairs_to_save
+    
     @user_entry.save!
     @iterative_chain.save!
   end

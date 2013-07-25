@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // User Entry Testing
-  $('.testing').each(function() {
+  $('.iterative-chains-testing').each(function() {
     console.log("User Entry Testing")
 
     $(".choices-wrapper input[type='radio']").on("click", function() {
@@ -16,9 +16,10 @@ $(document).ready(function() {
         $(this).next()[0].play();
       });
 
-      // Select next audio file and play it
+      // Show next image file
       $('.next').on("click", function() {
-        $('.selected').closest('.choice').css('visibility', 'hidden')
+        $('.selected').closest('.choice').toggleClass('already-selected')
+        $('.img-wrapper.testing input.sound').attr('value', $('.selected')[0].value)
         $('.selected').toggleClass('selected');
         $('.testing').toggleClass('testing').toggleClass('show').next().toggleClass('testing').toggleClass('show')
         $('.next').hide();
@@ -40,7 +41,8 @@ $(document).ready(function() {
 
       // Select next audio file and play it
       $('.next').on("click", function() {
-        $('.selected').closest('.choice').css('visibility', 'hidden')
+        $('.selected').closest('.choice').toggleClass('already-selected')
+        $('.audio-wrapper.testing input.image').attr('value', $('.selected')[0].value)
         $('.selected').toggleClass('selected');
         $('.testing').toggleClass('testing').next().toggleClass('testing')
         $('.testing audio')[0].load();
