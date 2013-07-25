@@ -5,6 +5,7 @@ LanguageExperiment::Application.routes.draw do
   resources :iterative_chains do
     get 'training', on: :member
     get 'testing', on: :member
+    post 'finish', on: :member
   end
 
   resources :pairs

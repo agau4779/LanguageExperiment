@@ -45,10 +45,25 @@ class IterativeChainsController < ApplicationController
     if (@iterative_chain.user_entries.size % 2) == 0
       @phone_to_sem = true
     end
-
-    # respond_to do |format|
-    #   format.html # new.html.erb
-    #   format.json { render json: @user_entry }
-    # end
+  end
+  
+  # Update chain by adding new user entry
+  def finish
+    @iterative_chain = IterativeChain.find(params[:id])
+    @user_entry = @iterative_chain.user_entries.create
+    @user_entry.pairs = [
+          { sound: "fej", image: "key" },
+          { sound: "feej", image: "truck" },
+          { sound: "jef", image: "feather" },
+          { sound: "jeej", image: "lamp" },
+          { sound: "fef", image: "window" },
+          { sound: "gaab", image: "rock climbing" },
+          { sound: "goob", image: "swimming" },
+          { sound: "boog", image: "running" },
+          { sound: "baab", image: "jumping on trampoline" },
+          { sound: "goog", image: "mopping" }
+        ]
+    @user_entry.save!
+    @iterative_chain.save!
   end
 end
