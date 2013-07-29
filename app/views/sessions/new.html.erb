@@ -1,0 +1,7 @@
+<%= flash[:error] %>
+
+<p> Welcome to the language learning experiment. </p>
+
+<%= form_for(:session, url: sessions_path) do |f| %>
+  <%= f.submit "Click here to start." %>
+<% end %>
