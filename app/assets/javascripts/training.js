@@ -17,6 +17,7 @@ $(document).ready(function() {
         count++;
       } else {
         interval_1 = window.clearInterval(interval_1);
+        window.location.pathname = window.location.pathname.replace(/training/, 'testing')
       }
     }
   });
