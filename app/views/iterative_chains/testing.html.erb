@@ -1,6 +1,6 @@
-<%= form_for @iterative_chain, url: {action: "finish"}, html: {class: "nifty_form"} do |f| %>
+<%= form_for @iterative_chain, url: {action: "finish"}, html: {class: "iterative-chains-testing"} do |f| %>
 	<% if @phone_to_sem %>
-		<div class="iterative-chains-testing sem-to-phone">
+		<div class="sem-to-phone">
 			<h1>Testing</h1>
 			<p>Sem to phone</p>
 			<div class='main-stimuli'>
@@ -33,7 +33,7 @@
 			<input class="next" type="button" value="Next">
 		</div>
 	<% else %>
-		<div class="iterative-chains-testing phone-to-sem">
+		<div class="phone-to-sem">
 			<h1>Testing</h1>
 			<p>Phone to sem</p>
 			<div class='main-stimuli'>
