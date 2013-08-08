@@ -21,7 +21,7 @@ class IterativeChainsController < ApplicationController
   def training
     @iterative_chain = IterativeChain.find(params[:id])
     @user_entry = @iterative_chain.user_entries.last
-    @stimuli = @user_entry.pairs
+    @stimuli = @user_entry.pairs.shuffle
   end
 
   # GET Testing /iterative_chains/:iterative_chain_id/testing
