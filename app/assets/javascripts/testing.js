@@ -23,8 +23,12 @@ $(document).ready(function() {
         $('.selected').toggleClass('selected');
         $('.testing').toggleClass('testing').toggleClass('show').next().toggleClass('testing').toggleClass('show')
         $('.next').hide();
+        if($('.testing').length == 0) {
+          $("input[type='submit']").show();
+        }
       });
     });
+    // END Sem to Phone
 
     // Phone to sem
     $('.phone-to-sem').each(function() {
@@ -48,7 +52,14 @@ $(document).ready(function() {
         $('.testing audio')[0].load();
         $('.testing audio')[0].play();
         $('.next').hide();
+        if($('.testing').length == 0) {
+          $("input[type='submit']").show();
+        }
       });
     });
+    // END Phone to sem
+    
   });
+  // END User Entry Testing
+  
 });
