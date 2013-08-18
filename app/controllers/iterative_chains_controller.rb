@@ -2,6 +2,9 @@ class IterativeChainsController < ApplicationController
   before_filter :check_lock_id, only: [:training, :testing, :finish]
   before_filter :check_trained, only: [:training]
   
+  ##################################
+  ######## Helper methods ##########
+  ##################################
   # If any locks have expired, clear the :lock_id attribute
   # Expiration is over 30 minutes
   def update_locks
@@ -50,6 +53,10 @@ class IterativeChainsController < ApplicationController
     cookies.signed[:user_session_id] = { value: @chain.lock_id, expires: 30.minutes.from_now }
   end
   
+  ##################################
+  ######## Default methods #########
+  ##################################
+  
   # GET /iterative_chains
   # GET /iterative_chains.json
   def index
@@ -66,6 +73,10 @@ class IterativeChainsController < ApplicationController
       format.json { render json: @iterative_chain }
     end
   end
+  
+  ##################################
+  ######## Custom methods ##########
+  ##################################
   
   def start
     @iterative_chains = IterativeChain.all
