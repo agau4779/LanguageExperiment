@@ -16,6 +16,10 @@ class IterativeChainsController < ApplicationController
     end
   end
   
+  def start
+    
+  end
+  
   # GET Training /iterative_chains/:iterative_chain_id/training
   def training
     @iterative_chain = IterativeChain.find(params[:id])

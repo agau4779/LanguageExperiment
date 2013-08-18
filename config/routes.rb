@@ -1,4 +1,7 @@
 LanguageExperiment::Application.routes.draw do
+
+  root to: "iterative_chains#start"
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
