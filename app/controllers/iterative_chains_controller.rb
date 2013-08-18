@@ -1,5 +1,6 @@
 class IterativeChainsController < ApplicationController
   before_filter :check_lock_id, only: [:training, :testing, :finish]
+  before_filter :check_trained, only: [:training]
   
   # If any locks have expired, clear the :lock_id attribute
   # Expiration is over 30 minutes
@@ -10,6 +11,7 @@ class IterativeChainsController < ApplicationController
         if chain[:locked_at] < (DateTime.now - 30.minutes)
           chain[:lock_id] = nil
           chain[:locked_at] = nil
+          chain[:training_lock] = nil
         end
       end
     end
@@ -85,6 +87,11 @@ class IterativeChainsController < ApplicationController
     @iterative_chain = IterativeChain.find(params[:id])
     @user_entry = @iterative_chain.user_entries.last
     @stimuli = @user_entry.pairs.shuffle
+    
+    @iterative_chain.training_lock = SecureRandom.urlsafe_base64
+    @iterative_chain.save!
+    
+    cookies.signed[:trained] = { value: @iterative_chain.training_lock, expires: 30.minutes.from_now }
   end
   
   # GET Testing /iterative_chains/:iterative_chain_id/testing
@@ -136,7 +143,9 @@ class IterativeChainsController < ApplicationController
     # Unlock chain when submitting
     @iterative_chain.lock_id = nil
     @iterative_chain.locked_at = nil
+    @iterative_chain.training_lock = nil
     cookies.delete(:user_session_id)
+    cookies.delete(:trained)
     
     @user_entry.save!
     @iterative_chain.save!
@@ -154,6 +163,17 @@ class IterativeChainsController < ApplicationController
   def lock_id_matches?
     @chain = IterativeChain.find(params[:id])
     return @chain.lock_id == cookies.signed[:user_session_id]
+  end
+  
+  def check_trained
+    unless trained?
+      redirect_to testing_iterative_chain_path(params[:id])
+    end
+  end
+  
+  def trained?
+    @chain = IterativeChain.find(params[:id])
+    return @chain.training_lock != cookies.signed[:trained]
   end
   
 end
