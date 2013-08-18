@@ -49,8 +49,10 @@ $(document).ready(function() {
         $('.audio-wrapper.testing input.image').attr('value', $('.selected')[0].value)
         $('.selected').toggleClass('selected');
         $('.testing').toggleClass('testing').next().toggleClass('testing')
-        $('.testing audio')[0].load();
-        $('.testing audio')[0].play();
+        if($('.testing').length != 0) {
+          $('.testing audio')[0].load();
+          $('.testing audio')[0].play();
+        }
         $('.next').hide();
         if($('.testing').length == 0) {
           $("input[type='submit']").show();
