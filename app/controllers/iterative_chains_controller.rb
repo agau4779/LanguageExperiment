@@ -131,6 +131,7 @@ class IterativeChainsController < ApplicationController
     # print @pairs_to_save
     @user_entry.pairs = @pairs_to_save
     
+    # Unlock chain when submitting
     @iterative_chain.lock_id = nil
     @iterative_chain.locked_at = nil
     
