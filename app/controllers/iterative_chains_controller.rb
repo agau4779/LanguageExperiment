@@ -64,9 +64,17 @@ class IterativeChainsController < ApplicationController
   end
   
   def start
+    @iterative_chains = IterativeChain.all
+  end
+  
+  def check
     @chain_id = unlocked_chain
-    if @chain_id != -1
+    if @chain_id == -1
+      flash[:notice] = "Sorry, no chains are available at this time. Please try again later."
+      redirect_to root_url
+    else
       lock_chain(@chain_id)
+      redirect_to training_iterative_chain_path(@chain_id)
     end
   end
   
