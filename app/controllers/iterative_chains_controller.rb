@@ -1,4 +1,5 @@
 class IterativeChainsController < ApplicationController
+  before_filter :check_lock_id, only: [:training, :testing, :finish]
   
   # If any locks have expired, clear the :lock_id attribute
   # Expiration is over 30 minutes
@@ -44,6 +45,7 @@ class IterativeChainsController < ApplicationController
     @chain.lock_id = SecureRandom.urlsafe_base64
     @chain.locked_at = DateTime.now
     @chain.save!
+    cookies.signed[:user_session_id] = { value: @chain.lock_id, expires: 30.minutes.from_now }
   end
   
   # GET /iterative_chains
@@ -134,8 +136,24 @@ class IterativeChainsController < ApplicationController
     # Unlock chain when submitting
     @iterative_chain.lock_id = nil
     @iterative_chain.locked_at = nil
+    cookies.delete(:user_session_id)
     
     @user_entry.save!
     @iterative_chain.save!
   end
+  
+  private
+  
+  def check_lock_id
+    unless lock_id_matches?
+      flash[:error] = "Sorry, but you can't access this test right now."
+      redirect_to root_url
+    end
+  end
+  
+  def lock_id_matches?
+    @chain = IterativeChain.find(params[:id])
+    return @chain.lock_id == cookies.signed[:user_session_id]
+  end
+  
 end
