@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818034452) do
+ActiveRecord::Schema.define(:version => 20130818180350) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -55,10 +55,11 @@ ActiveRecord::Schema.define(:version => 20130818034452) do
   end
 
   create_table "iterative_chains", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "lock_id"
     t.datetime "locked_at"
+    t.string   "training_lock"
   end
 
   create_table "sounds", :force => true do |t|
