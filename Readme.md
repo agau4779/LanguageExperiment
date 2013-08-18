@@ -14,6 +14,12 @@ To push to Heroku, add the remote:
 To reset database on Heroku, use the following commands:
 - heroku pg:reset DATABASE
 	- type in name of app to confirm
-- heroku run rake db:create
 - heroku run rake db:migrate
 - heroku run rake db:seed
+
+TODO
+======
+
+- Set a cookie containing the lock_id when entering training phase
+- Add before_filter that checks for whether the cookie is set or not
+- Add a validation check, for when a user submits their choices for the pairings, making sure that the session is correct
