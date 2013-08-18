@@ -23,7 +23,7 @@ Dir.glob(File.join(Rails.root,'/app/assets/audio/*.wav')) do |s|
   sound.save!
 end
 
-iterative_chain = IterativeChain.create(locked: false)
+iterative_chain = IterativeChain.create
 user_entry = iterative_chain.user_entries.create
 user_entry.pairs = [
       { sound: "fej", image: "key" },
@@ -42,7 +42,7 @@ user_entry.pairs = [
 user_entry.save!
 iterative_chain.save!
 
-iterative_chain = IterativeChain.create(locked: false)
+iterative_chain = IterativeChain.create
 user_entry = iterative_chain.user_entries.create
 user_entry.pairs = [
       { sound: "fej", image: "key" },
