@@ -2,7 +2,6 @@
 	<% if @phone_to_sem %>
 		<div class="sem-to-phone">
 			<h1>Testing</h1>
-			<p>Sem to phone</p>
 			<div class='main-stimuli'>
 				<% @sems.each_with_index do |sem, index| %>
 					<% if index == 0 %>
@@ -35,7 +34,6 @@
 	<% else %>
 		<div class="phone-to-sem">
 			<h1>Testing</h1>
-			<p>Phone to sem</p>
 			<div class='main-stimuli'>
 				<input class="play-again" type="button" value="Play Word Again"/>
 				<% @phones.each_with_index do |phone, index| %>
@@ -66,5 +64,5 @@
 			<input class="next" type="button" value="Next">
 		</div>
 	<% end %>
-  <%= f.submit "Create" %>
+  <%= f.submit "Done" %>
 <% end %>
