@@ -1,4 +1,51 @@
 class IterativeChainsController < ApplicationController
+  
+  # If any locks have expired, clear the :lock_id attribute
+  # Expiration is over 30 minutes
+  def update_locks
+    @iterative_chains = IterativeChain.all
+    @iterative_chains.each do |chain|
+      unless chain[:locked_at] == nil
+        if chain[:locked_at] < (DateTime.now - 30.minutes)
+          chain[:lock_id] = nil
+          chain[:locked_at] = nil
+        end
+      end
+    end
+  end
+  
+  # If there are no unlocked chains, return -1
+  # Else, return id of unlocked chain with fewest user entries
+  def unlocked_chain
+    @iterative_chains = IterativeChain.all
+    @chain_id = -1
+    
+    update_locks
+    
+    @unlocked = @iterative_chains.select { |chain| chain[:lock_id] == nil }
+    
+    if @unlocked.empty? == false
+      min = @unlocked[0].user_entries.length
+      @chain_id = @unlocked[0].id
+      
+      @unlocked.each_with_index { |chain, index|
+        if chain.user_entries.length < min
+          min = chain.user_entries.length
+          @chain_id = chain.id
+        end
+      }
+    end
+    
+    return @chain_id
+  end
+  
+  def lock_chain(chain_id)
+    @chain = IterativeChain.find(chain_id)
+    @chain.lock_id = SecureRandom.urlsafe_base64
+    @chain.locked_at = DateTime.now
+    @chain.save!
+  end
+  
   # GET /iterative_chains
   # GET /iterative_chains.json
   def index
@@ -17,7 +64,10 @@ class IterativeChainsController < ApplicationController
   end
   
   def start
-    
+    @chain_id = unlocked_chain
+    if @chain_id != -1
+      lock_chain(@chain_id)
+    end
   end
   
   # GET Training /iterative_chains/:iterative_chain_id/training
